@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+  
+  <define>
+
+    <constant name="Collimator_Box_Depth"    value="300*mm"/>
+    <constant name="Collimator_Box_Width"    value="Tag_Box_1_Height"/>
+    <constant name="Collimator_Box_Height"   value="Tag_Box_1_Height"/>
+
+    <constant name="Collimator_Hole_Height"  value="70*mm"/>
+    <constant name="Collimator_Hole_Width"   value="96*mm"/>
+    <constant name="Collimator_Hole_XOff"    value="0"/>
+
+    <constant name="CollimatorZ"    value="-27*m"/>
+
+    <constant name="LumiDipole_CenterPosition"  value="-28.0*m"/>
+    <constant name="LumiDipole_x"  value="100.0*mm"/>
+    <constant name="LumiDipole_y"  value="100.0*mm"/>
+    <constant name="LumiDipole_z"  value="600.0*mm"/>
+
+
+  </define>
+
+  <detectors>
+
+
+    <detector id="1205" name="LumiCollimator" type="BackwardsCollimator" vis="Shape1_vis">
+      <dimensions height="Collimator_Box_Height"  width="Collimator_Box_Width"  depth="Collimator_Box_Depth"/>
+      <collimator height="Collimator_Hole_Height" width="Collimator_Hole_Width" xOff="Collimator_Hole_XOff"/>
+      <placement  z="CollimatorZ-Collimator_Box_Depth"/>
+    </detector>
+
+    <detector id="2000" name="LumiDipoleBox" type="DD4hep_TestShape_Creator">
+      <check vis="Shape1_vis">
+        <shape type="Box" dx="LumiDipole_x" dy="LumiDipole_y" dz="LumiDipole_z/2"/>
+        <position x="0" y="0" z="LumiDipole_CenterPosition"/>
+      </check>
+    </detector>
+
+    <detector id="2100" name="LumiSpectUp" type="DD4hep_TestShape_Creator">
+      <check vis="Shape1_vis">
+        <shape type="Box" dx="100*mm" dy="100*mm" dz="175*mm"/>
+        <position x="0" y="142*mm" z="-32175*mm"/>
+        <rotation x="0*rad"  y="0*rad"   z="0*rad"/>
+      </check>
+    </detector>
+
+    <detector id="2101" name="LumiSpectDown" type="DD4hep_TestShape_Creator">
+      <check vis="Shape1_vis">
+        <shape type="Box" dx="100*mm" dy="100*mm" dz="175*mm"/>
+        <position x="0" y="-142*mm" z="-32175*mm"/>
+        <rotation x="0*rad"  y="0*rad"   z="0*rad"/>
+      </check>
+    </detector>
+
+    <detector id="2102" name="LumiDirectCal" type="DD4hep_TestShape_Creator">
+      <check vis="Shape1_vis">
+        <shape type="Box" dx="100*mm" dy="100*mm" dz="175*mm"/>
+        <position x="0" y="0" z="-32600*mm"/>
+        <rotation x="0*rad"  y="0*rad"   z="0*rad"/>
+      </check>
+    </detector>
+
+<comment>
+    <detector id="2103" name="ExitWindow" type="DD4hep_TestShape_Creator">
+      <check vis="Shape2_vis">
+        <shape type="Box" dx="200*mm" dy="200*mm" dz="1.3*mm"/>
+        <position x="0" y="0" z="-18644*mm"/>
+        <rotation x="0*rad"  y="-1.32*rad"   z="0*rad"/>
+      </check>
+    </detector>
+</comment>
+
+  </detectors>
+
+  <fields>
+    <field name="LumiDipole" type="MultipoleMagnet">
+      <shape type="Box" dx="LumiDipole_x" dy="LumiDipole_y" dz="LumiDipole_z/2"/>
+      <position x="0" y="0" z="LumiDipole_CenterPosition"/>
+      <coefficient coefficient="0.26*tesla"/>
+    </field>
+  </fields>
+  
+</lccdd>
+

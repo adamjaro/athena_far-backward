@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+  
+  <define>
+
+    <constant name="Vac_Box_1_z"  value="B2BeR_CenterPosition-B2BeR_Length/2+Tag_Box_1_z"/>
+    <constant name="Vac_Box_2_z"  value="Tag_Box_2_z-Tag_Box_1_z"/>
+    <constant name="Vac_Box_3_z"  value="-Q3eR_CenterPosition-Tag_Box_2_z"/>
+
+    <constant name="Vac_Box_1_L_x" value="Tag_Box_1_Width*cos(Tag_Box_1_Angle)-Tag_Box_1_Depth*sin(Tag_Box_1_Angle)"/>
+    <constant name="Vac_Box_1_L_z" value="Tag_Box_1_Width*sin(Tag_Box_1_Angle)+Tag_Box_1_Depth*cos(Tag_Box_1_Angle)"/>
+    <constant name="Vac_Box_1_R_z" value="(-Tag_Box_1_x+Tag_Box_1_Height)*tan(Tag_Box_1_Angle)"/>
+    <constant name="Vac_Box_1_M_x" value="-Tag_Box_1_Width*cos(Tag_Box_1_Angle)-Tag_Box_1_Depth*sin(Tag_Box_1_Angle)"/>
+    <constant name="Vac_Box_1_M_z" value="-Tag_Box_1_Width*sin(Tag_Box_1_Angle)+Tag_Box_1_Depth*cos(Tag_Box_1_Angle)"/>
+
+    <constant name="Vac_Box_2_L_x" value="Tag_Box_2_Width*cos(Tag_Box_2_Angle)-Tag_Box_2_Depth*sin(Tag_Box_2_Angle)"/>
+    <constant name="Vac_Box_2_L_z" value="Tag_Box_2_Width*sin(Tag_Box_2_Angle)+Tag_Box_2_Depth*cos(Tag_Box_2_Angle)"/>
+    <constant name="Vac_Box_2_R_z" value="(-Tag_Box_2_x+Tag_Box_2_Height)*tan(Tag_Box_2_Angle)"/>
+    <constant name="Vac_Box_2_M_x" value="-Tag_Box_2_Width*cos(Tag_Box_2_Angle)-Tag_Box_2_Depth*sin(Tag_Box_2_Angle)"/>
+    <constant name="Vac_Box_2_M_z" value="-Tag_Box_2_Width*sin(Tag_Box_2_Angle)+Tag_Box_2_Depth*cos(Tag_Box_2_Angle)"/>
+
+    <constant name="Vac_Box_3_L_x" value="Q3eR_InnerRadius*2*cos(Q3eR_Theta)-0.5*Q3eR_Length*sin(Q3eR_Theta)"/>
+    <constant name="Vac_Box_3_R_x" value="-Vac_Box_3_L_x"/>
+    <constant name="Vac_Box_3_L_z" value="Q3eR_InnerRadius*2*sin(Q3eR_Theta)+0.5*Q3eR_Length*cos(Q3eR_Theta)"/>
+    <constant name="Vac_Box_3_R_z" value="(-Q3eR_XPosition+Tag_Box_2_Height)*tan(Q3eR_Theta)"/>
+ 
+  </define>
+
+  <detectors>
+
+    <detector id="1201" name="BackVacBoxA" type="BackwardsVacuumBox">
+      <dimensions height="Tag_Box_1_Height"/>
+      <placement  z="B2BeR_CenterPosition-B2BeR_Length/2"/>
+      <points     x00="Tag_Box_1_Height"  y00="0" 
+                  x01="-Tag_Box_1_Height" y01="0" 
+                  x02="Tag_Box_1_x-Vac_Box_1_L_x" y02="Vac_Box_1_z-Vac_Box_1_L_z" 
+                  x03="Tag_Box_1_Height" y03="Vac_Box_1_z-Tag_Box_1_Depth+Vac_Box_1_R_z" />
+    </detector>
+
+    <detector id="1202" name="BackVacBoxB" type="BackwardsVacuumBox">
+      <dimensions height="Tag_Box_1_Height"/>
+      <placement  z="-Tag_Box_1_z"/>
+      <points     x00="Tag_Box_1_Height"  y00="-Tag_Box_1_Depth+Vac_Box_1_R_z" 
+                  x01="Tag_Box_1_x-Vac_Box_1_M_x" y01="-Vac_Box_1_M_z" 
+                  x02="Tag_Box_2_x-Vac_Box_2_L_x" y02="Vac_Box_2_z-Vac_Box_2_L_z" 
+                  x03="Tag_Box_1_Height" y03="Vac_Box_2_z-Tag_Box_2_Depth+Vac_Box_2_R_z" />
+    </detector>
+
+    <detector id="1203" name="BackVacBoxC" type="BackwardsVacuumBox">
+      <dimensions height="Tag_Box_1_Height"/>
+      <placement  z="-Tag_Box_2_z"/>
+      <points     x00="Tag_Box_1_Height"  y00="-Tag_Box_2_Depth+Vac_Box_2_R_z" 
+                  x01="Tag_Box_2_x-Vac_Box_2_M_x" y01="-Vac_Box_2_M_z" 
+                  x02="Q3eR_XPosition-Vac_Box_3_L_x" y02="Vac_Box_3_z-Vac_Box_3_L_z" 
+                  x03="Q3eR_XPosition+Vac_Box_3_L_x" y03="Vac_Box_3_z-0.5*Q3eR_Length+Vac_Box_3_R_z" />
+    </detector>
+
+  </detectors>
+
+</lccdd>
+

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+
+  <define>
+
+    <!-- Connection to central beam pipe -->
+
+    <constant name="Center_Beampipe_End"  value="-4560.17 * mm"/>
+    <constant name="Center_Beampipe_Rad"  value="47.60 * mm"/>
+
+    <!-- Magnet dimensions and positions -->
+
+    <constant name="Q1eR_InnerRadius"  value="55.5*mm"/>
+    <constant name="Q1eR_Length"  value="1.78*m"/>
+    <constant name="Q1eR_CenterPosition"  value="-6.2*m"/>
+
+    <constant name="Q2eR_InnerRadius"  value="64.5*mm"/>
+    <constant name="Q2eR_Length"  value="1.4*m"/>
+    <constant name="Q2eR_CenterPosition"  value="-8.3*m"/>
+
+    <constant name="B2AeR_InnerRadius"  value="70.0*mm"/>
+    <constant name="B2AeR_Length"  value="1.78*m"/>
+    <constant name="B2AeR_CenterPosition"  value="-10.5*m"/>
+
+    <constant name="B2BeR_InnerRadius"  value="98.0*mm"/>
+    <constant name="B2BeR_Length"  value="3.18*m"/>
+    <constant name="B2BeR_CenterPosition"  value="-13.275*m"/>
+
+    <constant name="Q3eR_InnerRadius"  value="50.0*mm"/>
+    <constant name="Q3eR_Length"  value="0.6*m"/>
+    <constant name="Q3eR_XPosition"  value="-0.46545*m"/>
+    <constant name="Q3eR_Theta"  value="18.08*mrad"/>
+    <constant name="Q3eR_CenterPosition"  value="-38.0*m"/>
+
+  </define>
+
+  <detectors>
+
+    <!-- Magnet volumes -->
+
+    <detector id="1094" name="Q1eRvol" type="CylindricalDipoleMagnet" vis="RedVis">
+      <placement  x="0" y="0" z="Q1eR_CenterPosition" theta="0*rad"/>
+      <dimensions x="Q1eR_InnerRadius*4" y="Q1eR_InnerRadius*4" z="Q1eR_Length" r="2.0*Q1eR_InnerRadius" />
+      <apperture  x="Q1eR_InnerRadius*2" y="Q1eR_InnerRadius*2" r="Q1eR_InnerRadius" />
+      <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
+    </detector>
+
+    <detector id="1095" name="Q2eRvol" type="CylindricalDipoleMagnet" vis="RedVis">
+      <placement  x="0" y="0" z="Q2eR_CenterPosition" theta="0*rad"/>
+      <dimensions x="Q2eR_InnerRadius*4" y="Q2eR_InnerRadius*4" z="Q2eR_Length" r="2.0*Q2eR_InnerRadius"/>
+      <apperture  x="Q2eR_InnerRadius*2" y="Q2eR_InnerRadius*2" r="Q2eR_InnerRadius"/>
+      <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
+    </detector>
+
+    <detector id="1096" name="B2AeRvol" type="CylindricalDipoleMagnet" vis="RedVis">
+      <placement  x="0" y="0" z="B2AeR_CenterPosition" theta="0*rad"/>
+      <dimensions x="B2AeR_InnerRadius*4" y="B2AeR_InnerRadius*4" z="B2AeR_Length" r="2.0*B2AeR_InnerRadius"/>
+      <apperture  x="B2AeR_InnerRadius*2" y="B2AeR_InnerRadius*2" r="B2AeR_InnerRadius"/>
+      <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
+    </detector>
+
+    <detector id="1097" name="B2BeRvol" type="CylindricalDipoleMagnet" vis="RedVis">
+      <placement  x="0" y="0" z="B2BeR_CenterPosition" theta="0*rad"/>
+      <dimensions x="B2BeR_InnerRadius*4" y="B2BeR_InnerRadius*4" z="B2BeR_Length" r="2.0*B2BeR_InnerRadius"/>
+      <apperture  x="B2BeR_InnerRadius*2" y="B2BeR_InnerRadius*2" r="B2BeR_InnerRadius"/>
+      <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
+    </detector>
+
+    <detector id="1098" name="Q3eRvol" type="CylindricalDipoleMagnet" vis="RedVis">
+      <placement  x="Q3eR_XPosition" y="0" z="Q3eR_CenterPosition" theta="Q3eR_Theta"/>
+      <dimensions x="Q3eR_InnerRadius*4" y="Q3eR_InnerRadius*4" z="Q3eR_Length" r="2.0*Q3eR_InnerRadius"/>
+      <apperture  x="Q3eR_InnerRadius*2" y="Q3eR_InnerRadius*2" r="Q3eR_InnerRadius"/>
+      <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
+    </detector>
+
+    <!-- Inner vacuum for magnets -->
+
+    <detector id="1192" name="toQ1" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="Q1eR_InnerRadius*2" innerD2="Center_Beampipe_Rad*2"
+        end1="Center_Beampipe_End" end2="Q1eR_CenterPosition+Q1eR_Length/2"/>
+    </detector>
+
+    <detector id="1193" name="Q1" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="Q1eR_InnerRadius*2" innerD2="Q1eR_InnerRadius*2"
+        end1="Q1eR_CenterPosition+Q1eR_Length/2" end2="Q1eR_CenterPosition-Q1eR_Length/2"/>
+    </detector>
+
+    <detector id="1194" name="Q2" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="Q2eR_InnerRadius*2" innerD2="Q2eR_InnerRadius*2"
+        end1="Q2eR_CenterPosition+Q2eR_Length/2" end2="Q2eR_CenterPosition-Q2eR_Length/2"/>
+    </detector>
+
+    <detector id="1195" name="B2A" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="B2AeR_InnerRadius*2" innerD2="B2AeR_InnerRadius*2"
+        end1="B2AeR_CenterPosition+B2AeR_Length/2" end2="B2AeR_CenterPosition-B2AeR_Length/2"/>
+    </detector>
+
+    <detector id="1196" name="B2B" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="B2BeR_InnerRadius*2" innerD2="B2BeR_InnerRadius*2"
+        end1="B2BeR_CenterPosition+B2BeR_Length/2" end2="B2BeR_CenterPosition-B2BeR_Length/2"/>
+    </detector>
+
+    <detector id="1198" name="Q1Q2" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="Q2eR_InnerRadius*2" innerD2="Q1eR_InnerRadius*2"
+        end1="Q1eR_CenterPosition-Q1eR_Length/2" end2="Q2eR_CenterPosition+Q2eR_Length/2"/>
+    </detector>
+
+    <detector id="1199" name="Q2B2A" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="B2AeR_InnerRadius*2" innerD2="Q2eR_InnerRadius*2"
+        end1="Q2eR_CenterPosition-Q2eR_Length/2" end2="B2AeR_CenterPosition+B2AeR_Length/2"/>
+    </detector>
+
+    <detector id="1200" name="B2AB2B" type="BackwardsBeamPipe">
+      <Pipe wall_thickness="2*mm" innerD1="B2BeR_InnerRadius*2" innerD2="B2AeR_InnerRadius*2"
+        end1="B2AeR_CenterPosition-B2AeR_Length/2" end2="B2BeR_CenterPosition+B2BeR_Length/2"/>
+    </detector>
+
+   </detectors>
+
+  <fields>
+
+    <!-- Magnetic fields -->
+
+    <field name="Q1eR" type="MultipoleMagnet">
+      <shape type="Tube" rmax="Q1eR_InnerRadius" dz="Q1eR_Length/2"/>
+      <position x="0" y="0" z="Q1eR_CenterPosition"/>
+      <coefficient/>
+      <coefficient coefficient="-13.3153*tesla/meter"/>
+    </field>
+
+    <field name="Q2eR" type="MultipoleMagnet">
+      <shape type="Tube" rmax="Q2eR_InnerRadius" dz="Q2eR_Length/2"/>
+      <position x="0" y="0" z="Q2eR_CenterPosition"/>
+      <coefficient/>
+      <coefficient coefficient="12.0595*tesla/meter"/>
+    </field>
+
+    <field name="Q3eR" type="MultipoleMagnet">
+      <shape type="Tube" rmax="Q3eR_InnerRadius" dz="Q3eR_Length/2"/>
+      <position x="0" y="0" z="Q3eR_CenterPosition"/>
+      <coefficient/>
+      <coefficient coefficient="12.0595*tesla/meter"/>
+    </field>
+
+    <field name="B2AeR" type="MultipoleMagnet">
+      <shape type="Tube" rmax="B2AeR_InnerRadius" dz="B2AeR_Length/2"/>
+      <position x="0" y="0" z="B2AeR_CenterPosition"/>
+      <coefficient coefficient="0.192*tesla"/>
+    </field>
+
+    <field name="B2BeR" type="MultipoleMagnet">
+      <shape type="Tube" rmax="B2BeR_InnerRadius" dz="B2BeR_Length/2"/>
+      <position x="0" y="0" z="B2BeR_CenterPosition"/>
+      <coefficient coefficient="0.238*tesla"/>
+    </field>
+
+  </fields>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</lccdd>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

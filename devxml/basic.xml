@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+
+  <define>
+    <include ref="../ip6/ip6_defs.xml" />
+    <include ref="../compact/definitions.xml" />
+  </define>
+
+  <includes>
+    <gdmlFile ref="../compact/elements.xml"/>
+    <gdmlFile ref="../compact/materials.xml"/>
+    <file     ref="../compact/optical_materials.xml"/>
+  </includes>
+
+  <includes>
+    <gdmlFile  ref="../xml/elements.xml"/>
+    <gdmlFile  ref="../xml/materials.xml"/>
+  </includes>
+
+  <display>
+    <include ref="../xml/display.xml" />
+  </display>
+
+
+
+
+
+
+
+
+
+
+</lccdd>
+

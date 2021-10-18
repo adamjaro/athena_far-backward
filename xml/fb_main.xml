@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+
+  <includes>
+    <gdmlFile  ref="elements.xml"/>
+    <gdmlFile  ref="materials.xml"/>
+  </includes>
+
+  <display>
+    <include ref="display.xml" />
+  </display>
+
+  <include ref="fb_magnets.xml" />
+
+  <include ref="taggers.xml" />
+
+  <include ref="lumi.xml" />
+
+  <!--include ref="vacuumnolumi.xml" /-->
+  <include ref="vacuum.xml" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</lccdd>
+
+

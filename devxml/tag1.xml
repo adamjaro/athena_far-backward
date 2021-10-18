@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+
+  <includes>
+    <file ref="basic.xml"/>
+  </includes>
+  
+  <define>
+
+    <constant name="Tag_Box_1_Depth"    value="175*mm"/>
+    <constant name="Tag_Box_2_Depth"    value="Tag_Box_1_Depth"/>
+    <constant name="Tag_Box_1_Width"  value="200*mm"/>
+    <constant name="Tag_Box_2_Width"  value="150*mm"/>
+    <constant name="Tag_Box_1_z"  value="24175*mm"/>
+    <constant name="Tag_Box_2_z"  value="36175*mm"/>
+    <constant name="Tag_Box_1_x"  value="-530*mm"/>
+    <constant name="Tag_Box_2_x"  value="-662*mm"/>
+    <constant name="Tag_Box_1_Height"  value="200*mm"/>
+    <constant name="Tag_Box_2_Height"  value="100*mm"/>
+    <constant name="Tag_Box_1_Angle"  value="0.018332*rad"/>
+    <constant name="Tag_Box_2_Angle"  value="Tag_Box_1_Angle"/>
+
+    <constant name="Tag_Tracker_1_Depth" value="130*mm"/>
+    <constant name="Tag_Cal_1_Depth" value="180*mm"/>
+
+    <constant name="pixel_size" value="55*um"/>
+
+  </define>
+
+
+
+  <detectors>
+
+    <detector id="194" name="Tagger1box" type="DD4hep_BoxSegment" vis="Shape1_vis">
+      <material name="Vacuum"/>
+      <box      x="Tag_Box_1_Width" y="Tag_Box_1_Height" z="Tag_Box_1_Depth"/>
+      <position   x="Tag_Box_1_x"     y="0"                z="-Tag_Box_1_z"/>
+      <rotation   x="0*rad"           y="0.018332*rad"     z="0*rad"/>
+    </detector>
+
+    <detector id="195" 
+      name="Tag_1_Track"
+      type="TaggerTracker"
+      readout="Tag_1_Track"
+      vis="Shape1_vis"
+      place_into="Tagger1box">
+      <dimensions x="Tag_Box_1_Width" y="Tag_Box_1_Height" z="Tag_Tracker_1_Depth"/>
+      <position   x="0"     y="0"                z="Tag_Box_1_Depth-Tag_Tracker_1_Depth/2"/>
+      <rotation   x="0*rad"           y="0*rad"     z="0*rad"/>
+      <trackLayer id="1" type="timepix" z="0 *mm"   sensor_thickness="200*um"/>
+      <trackLayer id="2" type="timepix" z="100 *mm" sensor_thickness="200*um"/>
+    </detector>
+
+    <detector id="196" 
+      name="Tag_1_Cal"
+      type="TaggerCalWSi"
+      readout="Tag_1_Cal"
+      vis="Shape1_vis"
+      place_into="Tagger1box">
+      <dimensions x="Tag_Box_1_Width" y="Tag_Box_1_Height" z="Tag_Cal_1_Depth"/>
+      <position   x="0"     y="0"                z="Tag_Box_1_Depth-Tag_Tracker_1_Depth-Tag_Cal_1_Depth/2"/>
+      <rotation   x="0*rad"           y="0*rad"     z="0*rad"/>
+    </detector>
+
+
+
+  </detectors>
+
+
+  <readouts>
+    <readout name="TimepixHits">
+      <segmentation type="CartesianGridXY" grid_size_x="pixel_size" grid_size_y="pixel_size" />
+      <id>system:8,layer:4,x:32:-16,y:-16</id>
+    </readout>
+
+    <readout name="Tag_1_Track">
+      <segmentation type="CartesianGridXY" grid_size_x="pixel_size" grid_size_y="pixel_size" />
+      <id>system:8,layer:4,x:32:-16,y:-16</id>
+    </readout>
+
+    <readout name="Tag_1_Cal">
+      <segmentation type="CartesianGridXY" grid_size_x="pixel_size" grid_size_y="pixel_size" />
+      <id>system:8,layer:22,x:32:-16,y:-16</id>
+    </readout>
+
+  </readouts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</lccdd>
+

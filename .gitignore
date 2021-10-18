@@ -1,0 +1,6 @@
+build/
+compact
+fieldmaps/
+ip6
+lib/
+*.root
