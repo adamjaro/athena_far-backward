@@ -7,17 +7,19 @@
   </includes>
 
   <display>
-    <include ref="display.xml" />
+    <include ref="display.xml"/>
   </display>
 
-  <include ref="fb_magnets.xml" />
+  <include ref="fb_magnets.xml"/>
 
-  <include ref="taggers.xml" />
+  <include ref="vacuum.xml"/>
 
-  <include ref="lumi.xml" />
+  <include ref="taggers.xml"/>
 
-  <!--include ref="vacuumnolumi.xml" /-->
-  <include ref="vacuum.xml" />
+  <include ref="lumi.xml"/>
+
+<comment>
+</comment>
 
 
 

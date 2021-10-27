@@ -26,11 +26,15 @@
     <constant name="B2BeR_Length"  value="3.18*m"/>
     <constant name="B2BeR_CenterPosition"  value="-13.275*m"/>
 
-    <constant name="Q3eR_InnerRadius"  value="50.0*mm"/>
+    <constant name="Q3eR_InnerRadius"  value="0.05*m"/>
     <constant name="Q3eR_Length"  value="0.6*m"/>
+    <constant name="Q3eR_StartZ"  value="-37.696067*m"/>
+    <constant name="Q3eR_StartX"  value="-0.460027*m"/>
+    <constant name="Q3eR_EndZ"  value="-38.295969*m"/>
+    <constant name="Q3eR_EndX"  value="-0.470873*m"/>
     <constant name="Q3eR_XPosition"  value="-0.46545*m"/>
-    <constant name="Q3eR_Theta"  value="18.08*mrad"/>
-    <constant name="Q3eR_CenterPosition"  value="-38.0*m"/>
+    <constant name="Q3eR_Theta"  value="0.0180766389*rad"/>
+    <constant name="Q3eR_CenterPosition"  value="-37.996018*m"/>
 
   </define>
 
@@ -65,13 +69,16 @@
       <apperture  x="B2BeR_InnerRadius*2" y="B2BeR_InnerRadius*2" r="B2BeR_InnerRadius"/>
       <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
     </detector>
+<comment>
+</comment>
 
     <detector id="1098" name="Q3eRvol" type="CylindricalDipoleMagnet" vis="RedVis">
-      <placement  x="Q3eR_XPosition" y="0" z="Q3eR_CenterPosition" theta="Q3eR_Theta"/>
+      <placement  x="(Q3eR_StartX+Q3eR_EndX)/2" y="0" z="(Q3eR_StartZ+Q3eR_EndZ)/2" theta="Q3eR_Theta"/>
       <dimensions x="Q3eR_InnerRadius*4" y="Q3eR_InnerRadius*4" z="Q3eR_Length" r="2.0*Q3eR_InnerRadius"/>
       <apperture  x="Q3eR_InnerRadius*2" y="Q3eR_InnerRadius*2" r="Q3eR_InnerRadius"/>
       <coil dx="2*cm" dy="1.5*cm" />!--unchecked--
     </detector>
+
 
     <!-- Inner vacuum for magnets -->
 
@@ -115,7 +122,17 @@
         end1="B2AeR_CenterPosition-B2AeR_Length/2" end2="B2BeR_CenterPosition+B2BeR_Length/2"/>
     </detector>
 
-   </detectors>
+<comment>
+</comment>
+
+    <detector name="Q3eRvac" type="DD4hep_TubeSegment" vis="Shape1_vis">
+      <material name="Vacuum"/>
+      <tubs rmin="0" rmax="Q3eR_InnerRadius" zhalf="Q3eR_Length/2"/>
+      <position x="-(Q3eR_StartX+Q3eR_EndX)/2" y="0" z="(Q3eR_StartZ+Q3eR_EndZ)/2"/>
+      <rotation x="0*rad"  y="Q3eR_Theta"   z="0*rad"/>
+    </detector>
+
+  </detectors>
 
   <fields>
 

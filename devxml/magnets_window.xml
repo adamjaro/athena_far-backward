@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lccdd>
+
+  <includes>
+    <file ref="basic.xml"/>
+  </includes>
+
+  <include ref="../xml/fb_magnets.xml"/>
+
+  <include ref="vac.xml"/>
+
+
+
+
+  <detectors>
+
+
+
+
+
+  </detectors>
+
+<comment>
+</comment>
+
+
+
+
+
+
+
+
+
+
+
+
+</lccdd>
+
